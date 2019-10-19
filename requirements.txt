@@ -1,0 +1,4 @@
+Django
+python-decouple
+social-auth-app-django
+python-twitter

@@ -1,0 +1,28 @@
+{% extends 'tweet/base.html' %}
+
+{% block content %}
+    <div class="block social-block social-twitter">
+        <p class="text-right"><a href="{% url 'create_tweet' %}">Create a tweet</a></p>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Url</th>
+                        <th>Content</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tweet in tweets %}
+                        <tr>
+                            <td><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id }}" target="_blank">Site</a></td>
+                            <td>{{ tweet.text }}</td>
+                            <td>{{ tweet.created_at }}</td>
+                            <td><a href="{% url 'delete_tweet' id=tweet.id %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
