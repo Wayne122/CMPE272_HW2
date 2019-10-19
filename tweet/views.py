@@ -8,8 +8,7 @@ import twitter
 
 
 def get_api():
-    api = twitter.Api(consumer_key=config('consumer_key'), consumer_secret=config('consumer_secret'),
-                      access_token_key=config('access_token_key'), access_token_secret=config('access_token_secret'))
+    api = twitter.Api(consumer_key=config('consumer_key'), consumer_secret=config('consumer_secret'), access_token_key=config('access_token_key'), access_token_secret=config('access_token_secret'))
     return api
 
 
@@ -31,6 +30,7 @@ def create_tweet(request):
             get_api().PostUpdate(new_status.get('content'))
             return HttpResponseRedirect('/')
     return render(request, 'tweet/create_tweet.html', {'form': form})
+
 
 def delete_tweet(request, id):
     get_api().DestroyStatus(id)

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import include, re_path
+from django.conf.urls import re_path
 
 from tweet.views import home, create_tweet, delete_tweet
 
