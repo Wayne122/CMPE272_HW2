@@ -12,14 +12,12 @@ class twitterTestCase(TestCase):
                                access_token_secret=config('access_token_secret'))
         self.str1 = "Test content"
         self.str2 = "test test"
+
+    def test(self):
         self.a = self.api.PostUpdate(self.str1)
         self.b = self.api.PostUpdate(self.str2)
-
-    def test_post(self):
         self.assertEqual(self.api.GetStatus(self.a.id).text, self.str1)
         self.assertEqual(self.api.GetStatus(self.b.id).text, self.str2)
-
-    def test_delete(self):
         self.api.DestroyStatus(self.a.id)
         self.api.DestroyStatus(self.b.id)
         for tweet in self.api.GetUserTimeline():
